@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard Tesla</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Dashboard de Previsão de Vendas - Tesla Model Y</h1>
+        <p class="lead">Previsão de vendas futuras para o Tesla Model Y.</p>
+        <div class="row mt-4">
+            {% for year, data in sales_data.items() %}
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">{{ year }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Modelo: {{ data.modelo }}</h5>
+                            <p class="card-text">Vendas: {{ data.vendas }}</p>
+                            {% if data.vendas_futuras %}
+                                <p class="card-text">Vendas Futuras: {{ data.vendas_futuras }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <p>Merecemos nota total Davi 💘</p>
+    </div>
+</body>
+</html>
